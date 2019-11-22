@@ -1,0 +1,16 @@
+.main__container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main__sidemenu {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+
+.main__detailview {
+  float: right;
+  width: 70%;
+  height: 100%;
+}
