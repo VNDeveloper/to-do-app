@@ -1,3 +1,32 @@
-.navigation__menu {
+.side-menu {
+  width: 30vw;
+}
+
+.side-menu__content body {
   width: 100%;
+}
+
+.side-menu__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu__list hr {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.side-menu__list li:hover {
+  background-color: aliceblue;
+}
+
+.side-menu__list-item {
+  margin: 10px 10px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.side-menu__list-item-content span {
+  margin-left: 15px;
 }
