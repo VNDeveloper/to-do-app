@@ -11,11 +11,12 @@ import "./SideMenu.css";
 
 class SideMenu extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="side-menu">
         <div className="side-menu__content">
           <ul className="side-menu__list">
-            <li>
+            <li onClick={() => this.props.onMenuClick("myDay")}>
               <div className="side-menu__list-item">
                 <div className="side-menu__list-item-content">
                   <FontAwesomeIcon icon={faGrinBeam} />
@@ -23,7 +24,7 @@ class SideMenu extends Component {
                 </div>
               </div>
             </li>
-            <li>
+            <li onClick={() => this.props.onMenuClick("important")}>
               <div className="side-menu__list-item">
                 <div className="side-menu__list-item-content">
                   <FontAwesomeIcon icon={faStar} />
@@ -31,7 +32,7 @@ class SideMenu extends Component {
                 </div>
               </div>
             </li>
-            <li>
+            <li onClick={() => this.props.onMenuClick("planned")}>
               <div className="side-menu__list-item">
                 <div className="side-menu__list-item-content">
                   <FontAwesomeIcon icon={faCalendar} />
@@ -39,7 +40,7 @@ class SideMenu extends Component {
                 </div>
               </div>
             </li>
-            <li>
+            <li onClick={() => this.props.onMenuClick("tasks")}>
               <div className="side-menu__list-item">
                 <div className="side-menu__list-item-content">
                   <FontAwesomeIcon icon={faTasks} />
@@ -50,7 +51,7 @@ class SideMenu extends Component {
 
             <hr></hr>
 
-            <li>
+            <li onClick={() => this.props.onMenuClick("addNewList")}>
               <div className="side-menu__list-item">
                 <div className="side-menu__list-item-content">
                   <FontAwesomeIcon icon={faPlus} />
