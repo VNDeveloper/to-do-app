@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
-import "./HomePage.css";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import DetailView from "../../components/DetailView/DetailView";
+
+import "./HomePage.css";
 
 class HomePage extends Component {
   constructor(props) {
