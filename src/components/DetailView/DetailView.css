@@ -1,11 +1,12 @@
 .detail-view {
   width: 100%;
   height: 100%;
+  display: inline-block;
 }
 
 .detail-view__header {
+  height: 25vh;
   position: relative;
-  height: 24vh;
   background-color: blanchedalmond;
 }
 
@@ -21,4 +22,9 @@
 
 .detail-view__header-content h2 {
   margin: 0;
+}
+
+.detail-view__task-content {
+  margin: 0;
+  height: 75vh;
 }
