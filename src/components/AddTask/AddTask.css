@@ -1,0 +1,14 @@
+.add-task {
+}
+
+.add-task__content {
+  padding: 10px;
+}
+
+.add-task__content hr {
+  margin: 0;
+}
+
+.add-task__text p {
+  margin: 0;
+}
