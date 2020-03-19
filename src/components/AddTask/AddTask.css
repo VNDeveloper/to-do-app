@@ -1,14 +1,25 @@
-.add-task {
+.task {
+  width: 100%;
 }
 
-.add-task__content {
-  padding: 10px;
+.task__content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40px auto 40px;
+  grid-template-rows: 25%;
 }
 
-.add-task__content hr {
-  margin: 0;
+.task__content-selected-icon {
+  width: 10%;
+  float: left;
 }
 
-.add-task__text p {
-  margin: 0;
+.task__content-text {
+  width: 75%;
+}
+
+.task__content-favorite-icon {
+  width: 10%;
+  float: right;
+  clear: both;
 }

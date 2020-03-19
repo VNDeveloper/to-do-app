@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
-import AddTask from "../AddTask/AddTask";
+import Task from "../AddTask/AddTask";
 import "./DetailView.css";
 
 class DetailView extends Component {
@@ -16,7 +16,7 @@ class DetailView extends Component {
           </div>
         </div>
         <div className="detail-view__task-content">
-          <AddTask />
+          <Task />
         </div>
       </div>
     );

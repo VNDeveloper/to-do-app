@@ -1,17 +1,30 @@
 import React, { Component } from "react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle, faStar } from "@fortawesome/free-regular-svg-icons";
+
 import "./AddTask.css";
 
-const AddTask = () => {
+const Task = () => {
   return (
-    <div className="add-task">
-      <div className="add-task__content">
-        <div className="add-task__text">
-          <p>Hello this my first task</p>
+    <div className="task">
+      <div className="task__container">
+        <div className="task__content">
+          <div className="task__content-selected-icon">
+            <FontAwesomeIcon icon={faCircle}></FontAwesomeIcon>
+          </div>
+          <div className="task__content-text">
+            <span>Something else</span>
+            <span>Something</span>
+          </div>
+          <div className="task__content-favorite-icon">
+            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+          </div>
         </div>
+        <hr></hr>
       </div>
-      <hr></hr>
     </div>
   );
 };
 
-export default AddTask;
+export default Task;
