@@ -2,24 +2,24 @@
   width: 100%;
 }
 
+.task__container {
+  margin: 0px 20px;
+  padding: 10px 0px;
+  border-bottom: 1px solid black;
+}
+
 .task__content {
   width: 100%;
   display: grid;
   grid-template-columns: 40px auto 40px;
-  grid-template-rows: 25%;
+  grid-template-rows: 100%;
 }
 
 .task__content-selected-icon {
-  width: 10%;
-  float: left;
 }
 
 .task__content-text {
-  width: 75%;
 }
 
 .task__content-favorite-icon {
-  width: 10%;
-  float: right;
-  clear: both;
 }

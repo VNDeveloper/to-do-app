@@ -21,7 +21,6 @@ const Task = () => {
             <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
           </div>
         </div>
-        <hr></hr>
       </div>
     </div>
   );
