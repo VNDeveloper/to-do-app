@@ -15,11 +15,16 @@ const DetailView = ({ selectedMenu, listOfTasks, onAddTask }) => {
         </div>
       </div>
       <div className="detail-view__task-content">
-        {listOfTasks.map((task, index) => (
-          <Task key={index} task={task} isTaskEmpty={false}></Task>
+        {listOfTasks.map(task => (
+          <Task
+            key={task.index}
+            task={task}
+            isTaskEmpty={false}
+            onAddTask={onAddTask}
+          ></Task>
         ))}
 
-        <Task onAddTask={onAddTask} isTaskEmpty={true} />
+        <Task onAddTask={onAddTask} task={{ name: "" }} isTaskEmpty={true} />
       </div>
     </div>
   );

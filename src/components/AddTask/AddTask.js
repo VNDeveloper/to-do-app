@@ -9,7 +9,7 @@ import "./AddTask.css";
 const Task = ({ task, isTaskEmpty }) => {
   console.log("Task", task);
   const [isUserEdit, setUserEdit] = useState(true);
-  const [taskName, setTaskName] = useState("");
+  const [taskName, setTaskName] = useState(task.name);
   console.log("isUserEdit", isUserEdit);
 
   return (
@@ -32,16 +32,23 @@ const Task = ({ task, isTaskEmpty }) => {
               console.log(e);
               setUserEdit(true);
             }}
-            onKeyDown={e => {
-              console.log("onKeyDown e", e);
-              setTaskName("random");
+            onKeyDown={event => {
+              let keyCode = event.keyCode ? event.keyCode : event.which;
+
+              console.log("taskName", event.target.value);
+              setTaskName(taskName);
+
+              if (keyCode == "13") {
+                onAddTask(taskName);
+              }
             }}
+            onChange={e => console.log("onChange e", e)}
           >
             <div
               className="task__content-name"
               contentEditable={isUserEdit}
               dangerouslySetInnerHTML={{
-                __html: task ? task.name : ""
+                __html: taskName
               }}
             ></div>
             <div className="task__content-icons"></div>

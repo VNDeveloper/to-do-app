@@ -13,12 +13,12 @@ class HomePage extends Component {
       selectedMenu: "myDay",
       listOfTasks: {
         myDay: [
-          { id: 1, name: "Task 1" },
-          { id: 2, name: "Second task" }
+          { index: 1, name: "Task 1" },
+          { index: 2, name: "Second task" }
         ],
-        important: [{ id: 1, name: "Task 2" }],
-        planned: [{ id: 1, name: "Task 3" }],
-        tasks: [{ id: 1, name: "Task 4" }]
+        important: [{ index: 1, name: "Task 2" }],
+        planned: [{ index: 1, name: "Task 3" }],
+        tasks: [{ index: 1, name: "Task 4" }]
       }
     };
 
@@ -30,13 +30,18 @@ class HomePage extends Component {
     this.setState({ selectedMenu });
   }
 
-  handleAddTask(task) {
+  handleAddTask(taskName) {
     console.log("handleAddTask", task);
     let selectedMenu = this.state.selectedMenu;
-    let currentListOfTask = this.state.listOfTasks;
+    let currentListOfTask = this.state.listOfTasks[selectedMenu];
+    let currentTaskIndex = selectedMenu[currentListOfTask.length - 1] + 1;
+    let newTask = {
+      index: currentTaskIndex,
+      name: taskName
+    };
 
     this.setState({
-      listOfTasks: currentListOfTask[selectedMenu].push(task)
+      listOfTasks: currentListOfTask[selectedMenu].push(newTask)
     });
   }
 
