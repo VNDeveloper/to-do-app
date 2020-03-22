@@ -12,17 +12,15 @@ class HomePage extends Component {
     this.state = {
       selectedMenu: "myDay",
       listOfTasks: {
-        myDay: [
-          { index: 1, name: "Task 1" },
-          { index: 2, name: "Second task" }
-        ],
-        important: [{ index: 1, name: "Task 2" }],
-        planned: [{ index: 1, name: "Task 3" }],
-        tasks: [{ index: 1, name: "Task 4" }]
+        myDay: [{ index: 0, name: "Task 1" }],
+        important: [{ index: 0, name: "Task 2" }],
+        planned: [{ index: 0, name: "Task 3" }],
+        tasks: [{ index: 0, name: "Task 4" }]
       }
     };
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
   handleMenuClick(selectedMenu) {
@@ -31,17 +29,22 @@ class HomePage extends Component {
   }
 
   handleAddTask(taskName) {
-    console.log("handleAddTask", task);
     let selectedMenu = this.state.selectedMenu;
-    let currentListOfTask = this.state.listOfTasks[selectedMenu];
-    let currentTaskIndex = selectedMenu[currentListOfTask.length - 1] + 1;
-    let newTask = {
-      index: currentTaskIndex,
-      name: taskName
-    };
+    let currentListOfTask = this.state.listOfTasks;
+    for (let category in currentListOfTask) {
+      if (category === selectedMenu) {
+        let currentTaskIndex = currentListOfTask[category].length - 1;
+        let newTask = {
+          index: currentTaskIndex + 1,
+          name: taskName
+        };
+
+        currentListOfTask[category] = [...currentListOfTask[category], newTask];
+      }
+    }
 
     this.setState({
-      listOfTasks: currentListOfTask[selectedMenu].push(newTask)
+      listOfTasks: currentListOfTask
     });
   }
 
@@ -57,7 +60,7 @@ class HomePage extends Component {
           <DetailView
             selectedMenu={selectedMenu}
             listOfTasks={this.state.listOfTasks[selectedMenu]}
-            onAddTask={this.state.handleAddTask}
+            onAddTask={this.handleAddTask}
           />
         </div>
       </div>
