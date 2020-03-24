@@ -24,13 +24,18 @@ class HomePage extends Component {
   }
 
   handleMenuClick(selectedMenu) {
-    console.log("selected Menu", selectedMenu);
     this.setState({ selectedMenu });
   }
 
+  /**
+   * handle the logic of update the state with new task
+   *
+   * @param {String} taskName - task name
+   */
   handleAddTask(taskName) {
     let selectedMenu = this.state.selectedMenu;
     let currentListOfTask = this.state.listOfTasks;
+
     for (let category in currentListOfTask) {
       if (category === selectedMenu) {
         let currentTaskIndex = currentListOfTask[category].length - 1;

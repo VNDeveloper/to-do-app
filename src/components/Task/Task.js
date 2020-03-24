@@ -4,11 +4,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faStar } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import "./AddTask.css";
+import "./Task.css";
 
 const Task = ({ task, isTaskEmpty, onAddTask }) => {
-  console.log("Task", task);
   const [isUserEdit, setUserEdit] = useState(true);
+
+  /**
+   * empty editable content div and
+   * call callback function
+   */
+  const handleAddTask = event => {
+    let taskName = event.target.innerText;
+
+    if (taskName !== "") {
+      onAddTask(taskName);
+      event.target.innerText = "";
+    }
+  };
+
+  /**
+   * add new task when user press
+   * - enter
+   *
+   * @param {Object} event - onKeyDown event object
+   */
+  const handleOnKeyDown = event => {
+    let keyCode = event.keyCode ? event.keyCode : event.which;
+
+    if (keyCode == "13") {
+      event.preventDefault();
+      handleAddTask(event);
+    }
+  };
 
   return (
     <div className="task">
@@ -16,7 +43,7 @@ const Task = ({ task, isTaskEmpty, onAddTask }) => {
         <div className="task__content">
           <div
             className="task__content-selected-icon"
-            onClick={e => setUserEdit(false)}
+            onClick={() => setUserEdit(false)}
           >
             {isTaskEmpty ? (
               <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
@@ -24,24 +51,10 @@ const Task = ({ task, isTaskEmpty, onAddTask }) => {
               <FontAwesomeIcon icon={faCircle}></FontAwesomeIcon>
             )}
           </div>
-          <div
-            className="task__content-info"
-            onClick={e => {
-              console.log(e);
-              setUserEdit(true);
-            }}
-          >
+          <div className="task__content-info" onClick={() => setUserEdit(true)}>
             <div
-              onKeyDown={event => {
-                let keyCode = event.keyCode ? event.keyCode : event.which;
-                let taskName = event.target.innerText;
-
-                if (keyCode == "13") {
-                  event.preventDefault();
-                  event.target.innerText = "";
-                  onAddTask(taskName);
-                }
-              }}
+              onKeyDown={event => handleOnKeyDown(event)}
+              onBlur={event => handleAddTask(event)}
               className="task__content-name"
               contentEditable={isUserEdit}
               dangerouslySetInnerHTML={{

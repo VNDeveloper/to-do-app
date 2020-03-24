@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
-import Task from "../AddTask/AddTask";
+import Task from "../Task/Task";
 import "./DetailView.css";
 
 const DetailView = ({ selectedMenu, listOfTasks, onAddTask }) => {
