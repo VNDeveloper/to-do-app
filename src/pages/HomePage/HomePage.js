@@ -53,6 +53,23 @@ class HomePage extends Component {
     });
   }
 
+  /**
+   * handle editing task
+   *
+   * @param {Integer} id
+   * @param {String} taskName
+   */
+  handleEditTask(index, taskName) {
+    let selectedMenu = this.state.selectedMenu;
+    let currentListOfTask = this.state.listOfTasks;
+
+    for (let category in currentListOfTask) {
+      if (category === selectedMenu) {
+        currentListOfTask[category] = [];
+      }
+    }
+  }
+
   render() {
     let selectedMenu = this.state.selectedMenu;
 
