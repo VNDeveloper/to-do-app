@@ -21,6 +21,7 @@ class HomePage extends Component {
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this);
   }
 
   handleMenuClick(selectedMenu) {
@@ -54,7 +55,9 @@ class HomePage extends Component {
   }
 
   /**
-   * handle editing task
+   * handle editing task,
+   * - find the current index within the list
+   * - change the name of that index
    *
    * @param {Integer} id
    * @param {String} taskName
@@ -65,9 +68,24 @@ class HomePage extends Component {
 
     for (let category in currentListOfTask) {
       if (category === selectedMenu) {
-        currentListOfTask[category] = [];
+        currentListOfTask[category] = currentListOfTask[category].map(task => {
+          let updateTask = {};
+
+          if (task.index === index) {
+            updateTask = {
+              index,
+              name: taskName
+            };
+
+            return updateTask;
+          }
+        });
       }
     }
+
+    this.setState({
+      listOfTasks: currentListOfTask
+    });
   }
 
   render() {
@@ -83,6 +101,7 @@ class HomePage extends Component {
             selectedMenu={selectedMenu}
             listOfTasks={this.state.listOfTasks[selectedMenu]}
             onAddTask={this.handleAddTask}
+            onEditTask={this.handleEditTask}
           />
         </div>
       </div>

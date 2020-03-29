@@ -5,7 +5,7 @@ import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import Task from "../Task/Task";
 import "./DetailView.css";
 
-const DetailView = ({ selectedMenu, listOfTasks, onAddTask }) => {
+const DetailView = ({ selectedMenu, listOfTasks, onAddTask, onEditTask }) => {
   return (
     <div className="detail-view">
       <div className="detail-view__header">
@@ -18,13 +18,20 @@ const DetailView = ({ selectedMenu, listOfTasks, onAddTask }) => {
         {listOfTasks.map(task => (
           <Task
             key={task.index}
+            index={task.index}
             task={task}
             isTaskEmpty={false}
             onAddTask={onAddTask}
+            onEditTask={onEditTask}
           ></Task>
         ))}
 
-        <Task onAddTask={onAddTask} task={{ name: "" }} isTaskEmpty={true} />
+        <Task
+          onAddTask={onAddTask}
+          onEditTask={onEditTask}
+          task={{ name: "" }}
+          isTaskEmpty={true}
+        />
       </div>
     </div>
   );

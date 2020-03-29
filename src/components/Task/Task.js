@@ -6,17 +6,21 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./Task.css";
 
-const Task = ({ task, isTaskEmpty, onAddTask }) => {
+const Task = ({ index, task, isTaskEmpty, onAddTask, onEditTask }) => {
   const [isUserEdit, setUserEdit] = useState(true);
 
   /**
    * empty editable content div and
    * call callback function
+   *
+   * @param {Object} event
    */
   const handleAddTask = event => {
     let taskName = event.target.innerText;
 
-    if (taskName !== "") {
+    if (typeof index !== "undefined") {
+      onEditTask(index, taskName);
+    } else {
       onAddTask(taskName);
       event.target.innerText = "";
     }
@@ -54,7 +58,6 @@ const Task = ({ task, isTaskEmpty, onAddTask }) => {
           <div className="task__content-info" onClick={() => setUserEdit(true)}>
             <div
               onKeyDown={event => handleOnKeyDown(event)}
-              onBlur={event => handleAddTask(event)}
               className="task__content-name"
               contentEditable={isUserEdit}
               dangerouslySetInnerHTML={{
