@@ -15,11 +15,19 @@
   grid-template-rows: 100%;
 }
 
-.task__content-selected-icon {
+.task__content-info input {
+  border: 0;
+  width: 100%;
 }
 
-.task__content-text {
+.task__content-info input::placeholder {
+  color: black;
 }
 
-.task__content-favorite-icon {
+.task__content-info input:focus::placeholder {
+  opacity: 0.5;
+}
+
+.task__content-info input:focus {
+  outline: none;
 }
