@@ -15,8 +15,8 @@ class HomePage extends Component {
         myDay: [{ index: 0, name: "Task 1" }],
         important: [{ index: 0, name: "Task 2" }],
         planned: [{ index: 0, name: "Task 3" }],
-        tasks: [{ index: 0, name: "Task 4" }]
-      }
+        tasks: [{ index: 0, name: "Task 4" }],
+      },
     };
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -42,7 +42,7 @@ class HomePage extends Component {
         let currentTaskIndex = currentListOfTask[category].length - 1;
         let newTask = {
           index: currentTaskIndex + 1,
-          name: taskName
+          name: taskName,
         };
 
         currentListOfTask[category] = [...currentListOfTask[category], newTask];
@@ -50,7 +50,7 @@ class HomePage extends Component {
     }
 
     this.setState({
-      listOfTasks: currentListOfTask
+      listOfTasks: currentListOfTask,
     });
   }
 
@@ -68,23 +68,25 @@ class HomePage extends Component {
 
     for (let category in currentListOfTask) {
       if (category === selectedMenu) {
-        currentListOfTask[category] = currentListOfTask[category].map(task => {
-          let updateTask = {};
+        currentListOfTask[category] = currentListOfTask[category].map(
+          (task) => {
+            let updateTask = {};
 
-          if (task.index === index) {
-            updateTask = {
-              index,
-              name: taskName
-            };
+            if (task.index === index) {
+              updateTask = {
+                index,
+                name: taskName,
+              };
 
-            return updateTask;
+              return updateTask;
+            }
           }
-        });
+        );
       }
     }
 
     this.setState({
-      listOfTasks: currentListOfTask
+      listOfTasks: currentListOfTask,
     });
   }
 

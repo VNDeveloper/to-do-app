@@ -55,9 +55,9 @@ const Task = ({ index, task, isNewTask, onAddTask, onEditTask }) => {
   };
 
   return (
-    <div className="task">
+    <div className={`task ${isNewTask ? "task-editable" : ""}`}>
       <div className="task__container">
-        <div className="task__content">
+        <div className={`task__content`}>
           <div className="task__content-selected-icon">
             <FontAwesomeIcon
               icon={isNewTask && !isUserEditing ? faPlus : faCircle}
@@ -69,19 +69,6 @@ const Task = ({ index, task, isNewTask, onAddTask, onEditTask }) => {
               setUserEditing(true);
             }}
           >
-            {/* <div
-              onKeyDown={event => handleOnKeyDown(event)}
-              onBlur={event => {
-                handleAddTask(event);
-                setUserEditing(false);
-              }}
-              id="task__content-name"
-              className="task__content-name"
-              contentEditable={isUserEditing}
-              dangerouslySetInnerHTML={{
-                __html: taskName
-              }}
-            ></div> */}
             <input
               type="text"
               value={taskName}
