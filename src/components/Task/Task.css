@@ -13,7 +13,7 @@
 }
 
 .task:hover {
-  background-color: blue;
+  background-color: lightblue;
 }
 
 .task__container {

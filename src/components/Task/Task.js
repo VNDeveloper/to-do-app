@@ -6,7 +6,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./Task.css";
 
-const Task = ({ index, task, isNewTask, onAddTask, onEditTask }) => {
+const Task = ({
+  index,
+  task,
+  isNewTask,
+  onAddTask,
+  onEditTask,
+  onClickTask,
+}) => {
   const [isUserEditing, setUserEditing] = useState(false);
   const [taskName, setTaskName] = useState(task ? task.name : "");
 
@@ -55,7 +62,10 @@ const Task = ({ index, task, isNewTask, onAddTask, onEditTask }) => {
   };
 
   return (
-    <div className={`task ${isNewTask ? "task-editable" : ""}`}>
+    <div
+      onClick={onClickTask}
+      className={`task ${isNewTask && "task-editable"}`}
+    >
       <div className="task__container">
         <div className={`task__content`}>
           <div className="task__content-selected-icon">
@@ -84,9 +94,7 @@ const Task = ({ index, task, isNewTask, onAddTask, onEditTask }) => {
             <div className="task__content-icons"></div>
           </div>
           <div className="task__content-favorite-icon">
-            {!isNewTask ? (
-              <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            ) : null}
+            {!isNewTask && <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>}
           </div>
         </div>
       </div>

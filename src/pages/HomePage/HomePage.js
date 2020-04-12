@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import SideMenu from "../../components/SideMenu/SideMenu";
 import DetailView from "../../components/DetailView/DetailView";
+import TaskSideMenu from "../../components/TaskSideMenu/TaskSideMenu";
 
 import "./HomePage.css";
 
@@ -17,11 +18,13 @@ class HomePage extends Component {
         planned: [{ index: 0, name: "Task 3" }],
         tasks: [{ index: 0, name: "Task 4" }],
       },
+      openTaskMenu: false,
     };
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleEditTask = this.handleEditTask.bind(this);
+    this.onClickTask = this.onClickTask.bind(this);
   }
 
   handleMenuClick(selectedMenu) {
@@ -90,6 +93,13 @@ class HomePage extends Component {
     });
   }
 
+  /**
+   * handle on click task
+   */
+  onClickTask() {
+    this.setState({ openTaskMenu: !this.state.openTaskMenu });
+  }
+
   render() {
     let selectedMenu = this.state.selectedMenu;
 
@@ -98,14 +108,20 @@ class HomePage extends Component {
         <div className="home-page__side-menu">
           <SideMenu onMenuClick={this.handleMenuClick} />
         </div>
-        <div className="home-page__detail-view">
+        <div
+          className={`home-page__detail-view ${
+            this.state.openTaskMenu && "home-page__side-menu-active"
+          }`}
+        >
           <DetailView
             selectedMenu={selectedMenu}
             listOfTasks={this.state.listOfTasks[selectedMenu]}
             onAddTask={this.handleAddTask}
             onEditTask={this.handleEditTask}
+            onClickTask={this.onClickTask}
           />
         </div>
+        {this.state.openTaskMenu && <TaskSideMenu />}
       </div>
     );
   }

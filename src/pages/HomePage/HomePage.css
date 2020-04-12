@@ -14,7 +14,15 @@ body {
 }
 
 .home-page__detail-view {
-  float: right;
+  float: left;
   width: 70%;
   height: 100%;
+}
+
+.home-page__task-menu {
+  display: none;
+}
+
+.home-page__side-menu-active {
+  width: 40%;
 }
