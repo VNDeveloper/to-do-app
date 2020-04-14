@@ -21,6 +21,8 @@ const DetailView = ({
         </div>
       </div>
       <div className="detail-view__task-content">
+        <Task isNewTask={true} onAddTask={onAddTask} />
+
         {listOfTasks.map((task) => (
           <Task
             key={task.index}
@@ -32,8 +34,6 @@ const DetailView = ({
             onClickTask={onClickTask}
           ></Task>
         ))}
-
-        <Task isNewTask={true} onAddTask={onAddTask} />
       </div>
     </div>
   );

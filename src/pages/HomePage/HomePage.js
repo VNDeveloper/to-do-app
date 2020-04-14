@@ -19,6 +19,7 @@ class HomePage extends Component {
         tasks: [{ index: 0, name: "Task 4" }],
       },
       openTaskMenu: false,
+      selectedTask: {},
     };
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -96,8 +97,14 @@ class HomePage extends Component {
   /**
    * handle on click task
    */
-  onClickTask() {
-    this.setState({ openTaskMenu: !this.state.openTaskMenu });
+  onClickTask(task) {
+    console.log("on click task", task);
+    if (task.name !== this.state.selectedTask.name) {
+      this.setState({
+        openTaskMenu: true,
+        selectedTask: task,
+      });
+    }
   }
 
   render() {
@@ -121,7 +128,9 @@ class HomePage extends Component {
             onClickTask={this.onClickTask}
           />
         </div>
-        {this.state.openTaskMenu && <TaskSideMenu />}
+        {this.state.openTaskMenu && (
+          <TaskSideMenu task={this.state.selectedTask} />
+        )}
       </div>
     );
   }

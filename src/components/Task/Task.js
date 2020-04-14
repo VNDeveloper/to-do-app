@@ -63,7 +63,7 @@ const Task = ({
 
   return (
     <div
-      onClick={onClickTask}
+      onClick={() => !isNewTask && onClickTask(task)}
       className={`task ${isNewTask && "task-editable"}`}
     >
       <div className="task__container">
