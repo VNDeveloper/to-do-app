@@ -1,4 +1,19 @@
 .task-side-menu {
   float: right;
-  width: 30%;
+  width: 25%;
+}
+
+.task-side-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.task-side-menu__list li {
+  background-color: lightcoral;
+  margin-bottom: 20px;
+}
+
+.task-side-menu__list .task-side-menu__list-item {
+  padding: 10px;
 }

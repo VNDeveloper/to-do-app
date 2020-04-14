@@ -5,10 +5,16 @@ import "./TaskSideMenu.css";
 const TaskSideMenu = () => {
   return (
     <div className="task-side-menu">
-      <ul>
-        <li>Task Name</li>
-        <li>Task Name 1</li>
-        <li>Task Name 2</li>
+      <ul className="task-side-menu__list">
+        <li>
+          <div className="task-side-menu__list-item">Task 1</div>
+        </li>
+        <li>
+          <div className="task-side-menu__list-item">Task 2</div>
+        </li>
+        <li>
+          <div className="task-side-menu__list-item">Task 3</div>
+        </li>
       </ul>
     </div>
   );
